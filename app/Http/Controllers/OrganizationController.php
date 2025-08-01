@@ -54,7 +54,7 @@ class OrganizationController extends Controller
      *     security={{"api_key": {}}}
      * )
      */
-    public function byBuilding(int $buildingId)
+    public function byBuilding($buildingId)
     {
         $orgs = $this->service->getByBuilding($buildingId);
 
@@ -87,7 +87,7 @@ class OrganizationController extends Controller
      *     security={{"api_key": {}}}
      * )
      */
-    public function byActivity(int $activityId)
+    public function byActivity($activityId)
     {
         $orgs = $this->service->getByActivity($activityId);
 
@@ -179,7 +179,7 @@ class OrganizationController extends Controller
      *     security={{"api_key": {}}}
      * )
      */
-    public function show(int $id)
+    public function show($id)
     {
         $org = $this->service->getById($id);
 
