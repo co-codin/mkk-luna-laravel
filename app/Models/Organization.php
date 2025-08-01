@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Database\Factories\OrganizationFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -9,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Organization extends Model
 {
+    use HasFactory;
+
     protected $guarded = ['id'];
 
     public function building(): BelongsTo
@@ -24,5 +28,10 @@ class Organization extends Model
     public function activities(): BelongsToMany
     {
         return $this->belongsToMany(Activity::class);
+    }
+
+    protected static function newFactory(): OrganizationFactory
+    {
+        return OrganizationFactory::new();
     }
 }
