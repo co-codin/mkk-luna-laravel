@@ -21,7 +21,6 @@ class Activity extends Model
         return $this->hasMany(Activity::class, 'parent_id');
     }
 
-    // Связь с организациями: вид деятельности может принадлежать многим организациям
     public function organizations(): BelongsToMany
     {
         return $this->belongsToMany(Organization::class);

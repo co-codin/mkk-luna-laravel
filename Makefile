@@ -25,7 +25,10 @@ migrate-refresh:
 	$(DOCKER_COMPOSE) exec $(APP_SERVICE) php artisan migrate:refresh
 
 shell:
-	$(DOCKER_COMPOSE) exec $(APP_SERVICE) sh
+	$(DOCKER_COMPOSE) exec $(APP_SERVICE) /bin/bash
 
 seed:
 	$(DOCKER_COMPOSE) exec $(APP_SERVICE) php artisan db:seed
+
+swagger:
+	$(DOCKER_COMPOSE) exec $(APP_SERVICE) php artisan l5-swagger:generate
