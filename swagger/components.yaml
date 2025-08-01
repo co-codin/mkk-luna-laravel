@@ -1,0 +1,105 @@
+components:
+  schemas:
+    PhoneResource:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: string
+
+    Organization:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneResource'
+        building:
+          $ref: '#/components/schemas/Building'
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    OrganizationFull:
+      allOf:
+        - $ref: '#/components/schemas/Organization'
+      properties:
+        description:
+          type: string
+        additional_info:
+          type: object
+
+    OrganizationCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+
+    Building:
+      type: object
+      properties:
+        id:
+          type: integer
+        address:
+          type: string
+        coordinates:
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: float
+            longitude:
+              type: number
+              format: float
+
+    BuildingCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        parent_id:
+          type: integer
+          nullable: true
+        level:
+          type: integer
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'
+
+    ActivityCollection:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Activity'

@@ -15,6 +15,7 @@ return [
                 'api' => 'api/documentation',
             ],
             'paths' => [
+                'components' => base_path('swagger/components.yaml'),
                 /*
                  * Edit to include full URL in ui for assets
                  */
